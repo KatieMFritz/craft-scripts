@@ -83,6 +83,14 @@ It's recommended that you set up a separate user with access to only S3, and set
 
 See [Mitigating Disaster via Website Backups](https://nystudio107.com/blog/mitigating-disaster-via-website-backups) for a detailed writeup.
 
+### sync_backups_to_spaces.sh
+
+The `sync_backups_to_spaces.sh` script syncs the backups from `LOCAL_BACKUPS_PATH` to the Digital Oceans Spaces Space specified in `REMOTE_S3_BUCKET`.
+
+If you have defined a optional subfolder, it will contain the backups to the path defined in `REMOTE_S3_PATH`.
+
+This script assumes that you have already [installed s3cmd](https://s3tools.org/download) and have [configured it](https://www.digitalocean.com/docs/spaces/resources/s3cmd/) with your credentials.
+
 ### backup_db.sh
 
 The `backup_db.sh` script backs up the local database into a timestamped, `gzip` compressed archive into the directory set via `LOCAL_BACKUPS_PATH`. It will also automatically rotate out (delete) any backups that are older than `GLOBAL_DB_BACKUPS_MAX_AGE` old.
