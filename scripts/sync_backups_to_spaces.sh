@@ -34,9 +34,9 @@ done
 echo "Ensuring asset directory exists at '${LOCAL_BACKUPS_PATH}'"
 mkdir -p "${LOCAL_BACKUPS_PATH}"
 
-# Sync the local backups to the Digital Ocean Spaces
-aws s3 sync ${LOCAL_BACKUPS_PATH} s3://${REMOTE_S3_BUCKET}/${REMOTE_S3_PATH}
-echo "*** Synced backups to ${REMOTE_S3_BUCKET}"
+# Push the local backups to the Digital Ocean Space
+s3cmd put ${LOCAL_BACKUPS_PATH}* s3://${REMOTE_S3_BUCKET}/${REMOTE_S3_PATH} --recursive
+echo "*** Synced backups to ${REMOTE_S3_BUCKET} on Digital Ocean Spaces"
 
 # Normal exit
 exit 0
